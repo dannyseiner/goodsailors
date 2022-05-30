@@ -1,0 +1,40 @@
+.post-container {
+  border-radius: 10px;
+  padding: 0px;
+}
+.post-author {
+  width: fit-content;
+  background-color: #fcecde;
+  color: #efbf93;
+  border-radius: 25px;
+  padding: 10px 15px 10px 15px;
+}
+.post-title {
+  font-weight: 800;
+}
+.post-image {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.post-button,
+a.post-button {
+  background: rgb(249, 195, 71);
+  background: linear-gradient(
+    90deg,
+    rgba(249, 195, 71, 1) 0%,
+    rgba(246, 154, 66, 1) 100%
+  );
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px 10px 20px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+}
+.post-button:hover {
+  border-radius: 9px;
+  color: white;
+}
