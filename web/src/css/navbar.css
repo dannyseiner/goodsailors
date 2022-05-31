@@ -1,0 +1,11 @@
+.nav-brand-part {
+  color: #f7ad44;
+}
+
+.nav-link {
+  transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #f7ad44 !important;
+}

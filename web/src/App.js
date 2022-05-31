@@ -6,7 +6,9 @@ import "./css/index.css"
 import Home from './screens/Home'
 import Post from './screens/Post'
 import NotFound from './screens/NotFound'
-
+import CreatePost from './screens/CreatePost'
+import Login from './screens/Login'
+import EditPost from "./screens/EditPost"
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +16,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/create" element={<CreatePost />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/post/:id" element={<Post />} />
+        <Route path="/edit/:id" element={<EditPost />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

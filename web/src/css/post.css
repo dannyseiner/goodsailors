@@ -38,3 +38,9 @@ a.post-button {
   border-radius: 9px;
   color: white;
 }
+
+/* CREATE POST */
+.form-input {
+  border-radius: 10px;
+  resize: none;
+}

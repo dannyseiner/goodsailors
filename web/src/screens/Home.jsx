@@ -6,7 +6,6 @@ function Home() {
 
     const [posts, setPosts] = useState([]) // HOOK 
 
-
     useEffect(() => {
         loadPosts()
     }, [])
