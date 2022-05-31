@@ -13,7 +13,7 @@ app.set('json spaces', 2)
 
 app.listen(3002)
 
-const con = mysql.createConnection(config.macos)
+const con = mysql.createConnection(config[config.use])
 
 con.connect(function (err) {
     if (err) throw err

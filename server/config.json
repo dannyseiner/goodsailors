@@ -1,4 +1,6 @@
 {
+    "use":"macos",
+
     "windows":{
         "user": "root",
         "password": "",

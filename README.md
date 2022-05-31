@@ -5,6 +5,10 @@ Popis práce pro goodsailors.
 Pro spuštěný projektu je nutné stáhnout veškeré balíčky. V adresáři ./goodsailors/web a ./goodsailors/server použijte příkaz npm install.
 Poté si nahrajte databázi, které je uložená ve složce ./goodsailors/goodsailorsDB.sql.
 
+Pro připojení k databázi je nutné upravit soubor config.json, dle vašeho nastavení mysql. Na macos je nutné specifikovat socketPath, popřípadě upravit jméno a heslo k databází. Na Windows by mělo stačit pouze nahrát databázi.
+
+Připojení na MacOS je nastaveno pro aplikaci MAMP
+
 Projekt lze sputit použítím příkazů npm start a obou adresářích /web a /server.
 ## Server
 Ve složce server se nachází jednoduché API, které bere příspěvky a uživatele z databáze.
