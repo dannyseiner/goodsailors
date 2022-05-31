@@ -7,6 +7,7 @@
   background-color: #fcecde;
   color: #efbf93;
   border-radius: 25px;
+  height: fit-content;
   padding: 10px 15px 10px 15px;
 }
 .post-title {
@@ -16,6 +17,23 @@
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+.linear-g-2 {
+  background: rgb(249, 195, 71);
+  background: linear-gradient(
+    180deg,
+    rgba(249, 195, 71, 1) 0%,
+    rgba(246, 154, 66, 1) 100%
+  ) !important;
+}
+.linear-g-3 {
+  background: rgb(249, 195, 71);
+  background: linear-gradient(
+    250deg,
+    rgba(249, 195, 71, 1) 0%,
+    rgba(246, 154, 66, 1) 100%
+  ) !important;
 }
 .post-button,
 a.post-button {
@@ -37,10 +55,4 @@ a.post-button {
 .post-button:hover {
   border-radius: 9px;
   color: white;
-}
-
-/* CREATE POST */
-.form-input {
-  border-radius: 10px;
-  resize: none;
 }

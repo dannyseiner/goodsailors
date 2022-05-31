@@ -15,7 +15,7 @@ const NavbarCom = () => {
     }
 
     return (
-        <Navbar bg="light" expand="lg" className="slideFromTop box-shadow">
+        <Navbar bg="white" expand="lg" className="slideFromTop box-shadow">
             <Container>
                 <Navbar.Brand >
                     <span className="nav-brand-part">Good</span>sailors

@@ -23,7 +23,7 @@ function Login() {
 
 
     return (
-        <Container className='mt-5 fadeIn bg-light box-shadow flex container-wrap post-container p-4'>
+        <Container className='fadeIn box-shadow flex form-login container-wrap post-container p-4'>
             {user ? <div>
                 <p className='text-center pt-2'>
                     Učet je již přihlášen <span style={{ color: "#f7ad44", fontWeight: "bold" }}>{user.user_name}</span>, pro návrat klikněte <Link to={"/home"}>zde</Link>
@@ -32,7 +32,7 @@ function Login() {
             </div>
                 :
                 <Form>
-                    <h4 className='text-center'>Přihlášení</h4>
+                    <h4 className='text-center mb-5'>Přihlášení</h4>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <FloatingLabel
                             controlId="floatingInput"

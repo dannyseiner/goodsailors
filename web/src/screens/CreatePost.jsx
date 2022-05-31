@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Form, Button, FloatingLabel, Container } from "react-bootstrap"
 import axios from "axios"
 import { Link } from 'react-router-dom';
+import { JournalPlus, ArrowReturnLeft } from "react-bootstrap-icons"
 
 function CreatePost() {
 
@@ -18,6 +19,10 @@ function CreatePost() {
             alert("Minimální velikost titulku musí být 5 a textu 10 znaků")
             return
         }
+        if (title.length > 150) {
+            alert("Maximální velikost titulku je 150 znaků")
+            return
+        }
         axios.post("http://localhost:3002/createpost", {
             title: title,
             message: message,
@@ -30,13 +35,15 @@ function CreatePost() {
     }
 
     return (
-        <Container className='mt-5 fadeIn bg-light box-shadow flex container-wrap post-container p-4'>
+        <Container className='mt-5 fadeIn  box-shadow flex container-wrap post-container p-4'>
             {user === false ?
                 <div>
                     Pro přidání příspvěku se musíte přihlásit <Link to='/login'>zde</Link>
                 </div>
                 :
                 <Form>
+                    <h4 className='text-center mb-4'>Vytvořit příspěvek</h4>
+
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <FloatingLabel
                             controlId="floatingInput"
@@ -60,8 +67,11 @@ function CreatePost() {
                     </Form.Group>
 
                     <div className="div-center">
+                        <Link type="button" className='post-button mx-3' to={`/`}>
+                            <ArrowReturnLeft size={23} />
+                        </Link>
                         <Button type="button" className='post-button' onClick={() => sendPost()}>
-                            Vytvořit
+                            <JournalPlus size={23} />
                         </Button>
                     </div>
                 </Form>

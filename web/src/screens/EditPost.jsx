@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import { Container, Form, Button, FloatingLabel } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
+import { ArrowReturnLeft, Pencil, Trash } from "react-bootstrap-icons"
 function EditPost() {
     const params = useParams()
 
@@ -43,6 +44,10 @@ function EditPost() {
             alert("Minimální velikost titulku musí být 5 a textu 10")
             return
         }
+        if (title.length > 150) {
+            alert("Maximální velikost titulku je 150 znaků")
+            return
+        }
         axios.post('http://localhost:3002/editpost', {
             title: title,
             message: message,
@@ -70,7 +75,7 @@ function EditPost() {
 
     }
     return (
-        <Container className='mt-5 fadeIn bg-light box-shadow flex container-wrap post-container p-4'>
+        <Container className='mt-5 fadeIn box-shadow flex container-wrap post-container p-4'>
             {user.notlogged === true ?
                 <div>
                     Pro upravení příspěvku se musíte přihlásit <Link to='/login'>zde</Link>
@@ -79,6 +84,8 @@ function EditPost() {
                 <Form>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <h4 className='text-center mb-4'>Upravit příspěvek</h4>
+
                         <FloatingLabel
                             controlId="floatingInput"
                             label="Titulek"
@@ -102,13 +109,13 @@ function EditPost() {
 
                     <div className="div-center">
                         <Link type="button" className='post-button' to={`/post/${params.id}`}>
-                            Zobrazit
+                            <ArrowReturnLeft size={23} />
                         </Link>
-                        <Button type="button" className='post-button mx-3' onClick={() => updatePost()}>
-                            Upravit
+                        <Button type="button" className='post-button mx-3 linear-g-2' onClick={() => updatePost()}>
+                            <Pencil size={23} />
                         </Button>
-                        <Button type="button" className='post-button' onClick={() => deletePost()}>
-                            Smazat
+                        <Button type="button" className='post-button linear-g-3' onClick={() => deletePost()}>
+                            <Trash size={23} />
                         </Button>
                     </div>
                 </Form>

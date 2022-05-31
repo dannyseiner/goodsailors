@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import { Container, Card, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { Pencil } from "react-bootstrap-icons"
+import { Pencil, ArrowReturnLeft } from "react-bootstrap-icons"
 function Post() {
 
     const [data, setData] = useState({})
@@ -29,7 +29,7 @@ function Post() {
     }
 
     return (
-        <Container className='mt-5 fadeIn bg-light box-shadow flex container-wrap post-container'>
+        <Container className='mt-5 fadeIn box-shadow flex container-wrap post-container'>
             <img className='post-image' src="https://nystudio107-ems2qegf7x6qiqq.netdna-ssl.com/img/blog/_1200x675_crop_center-center_82_line/image_optimzation.jpg" />
             <div className="p-4">
                 <Row>
@@ -45,10 +45,12 @@ function Post() {
                 </div>
                 <p className="px-3 mt-1">{data.post_message}</p>
                 <div className="div-center">
+                    <Link to={`/`} className='post-button linear-g-2'>
+                        <ArrowReturnLeft size={23} />
+                    </Link>
                     {user.user_id === data.post_author_id ? <Link to={`/edit/${data.post_id}`} className='post-button mx-2'>
                         <Pencil size={23} />
                     </Link> : ""}
-                    <Link to={`/`} className='post-button'>Zpět</Link>
                 </div>
             </div>
         </Container>
