@@ -10,6 +10,7 @@ Pro připojení k databázi je nutné upravit soubor config.json, dle vašeho na
 Připojení na MacOS je nastaveno pro aplikaci MAMP
 
 Projekt lze sputit použítím příkazů npm start a obou adresářích /web a /server.
+Server lze spustit i s nodemon pomocí npm run dev
 ## Server
 Ve složce server se nachází jednoduché API, které bere příspěvky a uživatele z databáze.
 Server obsahuje tyto balíčky: 
@@ -17,7 +18,7 @@ Server obsahuje tyto balíčky:
 - mysql = propojení s databází
 - body-parser = parametry pro post požadavky
 - cors = nastavení pravidel pro server
-- nodemon (lze použít i node)
+- nodemon = server se restartuje po upravení kódu
 
 Pro přihlášení jsem nechal heslo v jeho původním tvaru bez šiforvání. Server obsahuje následující cesty:
 

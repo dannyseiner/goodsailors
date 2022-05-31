@@ -1,5 +1,5 @@
 {
-    "use":"macos",
+    "use":"windows",
 
     "windows":{
         "user": "root",
