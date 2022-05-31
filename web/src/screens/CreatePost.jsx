@@ -11,10 +11,12 @@ function CreatePost() {
     const [user, setUser] = useState(false)
 
     useEffect(() => {
+        // kontrola uzivatele jestli je prihlasen a kdyz ano prirazeni jeho dat do user
         setUser(sessionStorage.getItem("user") === null ? false : JSON.parse(sessionStorage.getItem("user")))
     }, [])
 
     const sendPost = () => {
+        // validace prispavku
         if (title.length < 5 || message.length < 10) {
             alert("Minimální velikost titulku musí být 5 a textu 10 znaků")
             return
@@ -23,6 +25,7 @@ function CreatePost() {
             alert("Maximální velikost titulku je 150 znaků")
             return
         }
+        // vytvoreni prispevku
         axios.post("http://localhost:3002/createpost", {
             title: title,
             message: message,

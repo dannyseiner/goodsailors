@@ -41,10 +41,10 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `post_author_id`, `post_title`, `post_message`) VALUES
-(4, 1, 'Testovaci prispevek 1', 'Testovaci prispevek 1 text 1\n'),
+(4, 1, 'Testovaci prispevek 1', 'Testovaci prispevek 1 text 1'),
 (6, 2, 'Testovaci prispevek 2', 'Testovaci prispevek 2 text 2'),
 (7, 2, 'Testovaci prispevek 3', 'Testovaci prispevek 3 text 3'),
-(8, 1, 'Testovaci prispevek 4', 'Testovaci prispevek 4 text 4\n');
+(8, 1, 'Testovaci prispevek 4', 'Testovaci prispevek 4 text 4');
 
 -- --------------------------------------------------------
 

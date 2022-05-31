@@ -20,28 +20,15 @@ con.connect(function (err) {
     // console.log("DATABABE CONNECTED!")
 })
 
-const log_event = (data) => {
-    console.clear()
-    console.log(data)
-}
 
 app.get("/", (req, res) => {
     res.send({ status: "ONLINE", mysql_status: "ON" })
-    log_event({
-        request: "/",
-        return: true,
-    })
 })
 
 app.get('/posts', (req, res) => {
-    con.query(`SELECT * FROM posts INNER JOIN users ON posts.post_author_id = users.user_id`, (err, result) => {
+    con.query(`SELECT * FROM posts INNER JOIN users ON posts.post_author_id = users.user_id ORDER BY post_id DESC`, (err, result) => {
         if (err) throw err
         res.send(result)
-        log_event({
-            request: "/posts",
-            return_length: result.length,
-            return: result,
-        })
     })
 })
 
@@ -54,6 +41,7 @@ app.get("/post/:id", (req, res) => {
 app.post("/createpost", urlencodedParser, (req, res) => {
     if (!req.body.user_id) return
     con.query(`INSERT INTO posts (post_author_id, post_title, post_message) VALUES (${req.body.user_id}, '${req.body.title}', '${req.body.message}')`, (err, result) => {
+        if (err) throw err
         res.send({ status: "OK" })
     })
 })
@@ -61,6 +49,7 @@ app.post("/createpost", urlencodedParser, (req, res) => {
 
 app.post("/login", urlencodedParser, (req, res) => {
     con.query(`SELECT * FROM users WHERE user_name = '${req.body.username}' AND user_password = '${req.body.password}' `, (err, result) => {
+        if (err) throw err
         res.send(result.length === 0 ? { status: false } : result)
     })
 })
@@ -76,5 +65,11 @@ app.post('/deletepost', urlencodedParser, (req, res) => {
     con.query(`DELETE FROM posts WHERE post_id = ${req.body.post_id} AND post_author_id = ${req.body.post_author_id}`, (err, result) => {
         if (err) throw err
         res.send({ status: "OK" })
+    })
+})
+
+app.post('/search', urlencodedParser, (req, res) => {
+    con.query(`SELECT * FROM posts INNER JOIN users ON posts.post_author_id = users.user_id WHERE post_title like '%${req.body.value}%'  ORDER BY post_id DESC`, (err, result) => {
+        res.send(result)
     })
 })

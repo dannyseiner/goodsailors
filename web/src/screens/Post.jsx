@@ -12,14 +12,17 @@ function Post() {
 
     useEffect(() => {
         getPost()
+        // kontrola zdali je uzivatel prihlasen
         if (sessionStorage.getItem("user") !== null) {
             setUser(JSON.parse(sessionStorage.getItem("user")))
         }
     }, [])
 
+    // select z databaze prispevku
     const getPost = () => {
         axios.get(`http://localhost:3002/post/${params.id}`)
             .then(response => {
+                // kontrola zdali prispevek existuje
                 if (response.data.length === 0) {
                     document.location.replace("/notfound")
                     return
@@ -48,6 +51,7 @@ function Post() {
                     <Link to={`/`} className='post-button linear-g-2'>
                         <ArrowReturnLeft size={23} />
                     </Link>
+                    {/* kontrola zdali je uzivatel autorem prispevku a kdyz ano vypis menu pro upraveni */}
                     {user.user_id === data.post_author_id ? <Link to={`/edit/${data.post_id}`} className='post-button mx-2'>
                         <Pencil size={23} />
                     </Link> : ""}

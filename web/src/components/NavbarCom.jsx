@@ -9,6 +9,7 @@ const NavbarCom = () => {
         setIsLogged(sessionStorage.getItem("user") === null ? false : JSON.parse(sessionStorage.getItem("user")))
     }, [])
 
+    // ODHLASENI
     const logOut = () => {
         sessionStorage.removeItem("user")
         window.location.reload();

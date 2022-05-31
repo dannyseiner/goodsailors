@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Form, FloatingLabel, Button } from "react-bootstrap"
 import axios from "axios"
-import { Link, Navigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 function Login() {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [user, setUser] = useState(false)
     useEffect(() => {
+        // kontrola zdali jiz uzivatel neni prihlasen 
         setUser(sessionStorage.getItem("user") === null ? false : JSON.parse(sessionStorage.getItem("user")))
     }, [])
 
@@ -16,6 +17,12 @@ function Login() {
             username: username,
             password: password
         }).then(response => {
+            // kontrole udaju zdali jsou v databazi
+            if (response.data.status === false) {
+                alert("Špatné uživatelské jméno nebo heslo")
+                return
+            }
+            // uzivatel prihlasen
             sessionStorage.setItem("user", JSON.stringify(response.data[0]))
             window.location.replace('/');
         })
@@ -36,7 +43,7 @@ function Login() {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <FloatingLabel
                             controlId="floatingInput"
-                            label="Jmeno"
+                            label="Jméno"
                             className="mb-3 form-input"
                             onChange={e => setUsername(e.target.value)}
                         >

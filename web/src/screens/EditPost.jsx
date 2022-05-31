@@ -18,6 +18,7 @@ function EditPost() {
     }, [])
 
     useEffect(() => {
+        // kontrole zdali je uzivatel prihlasen a zdali je autor prispevku
         if (user.user_id && post.post_author_id) {
             if (user.user_id !== post.post_author_id) {
                 window.location.replace('/')
@@ -25,6 +26,7 @@ function EditPost() {
         }
     }, [user])
 
+    // nahrani dat o prispevku z databaze
     const getPost = () => {
         axios.get(`http://localhost:3002/post/${params.id}`)
             .then(response => {
@@ -39,7 +41,9 @@ function EditPost() {
             })
     }
 
+
     const updatePost = () => {
+        // validace pro upraveni prispevku
         if (title.length < 5 || message.length < 10) {
             alert("Minimální velikost titulku musí být 5 a textu 10")
             return
@@ -48,6 +52,7 @@ function EditPost() {
             alert("Maximální velikost titulku je 150 znaků")
             return
         }
+        // upraveni prispevku v databazi
         axios.post('http://localhost:3002/editpost', {
             title: title,
             message: message,
@@ -61,6 +66,7 @@ function EditPost() {
     }
 
     const deletePost = () => {
+        // potvrzeni smazani prispevku
         if (window.confirm("Opravdu si přejete tento příspěvek odstranit?") == true) {
             axios.post('http://localhost:3002/deletepost', {
                 post_id: post.post_id,

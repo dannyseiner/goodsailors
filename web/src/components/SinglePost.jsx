@@ -1,11 +1,12 @@
 import React from 'react'
-import { Container, Row, Col, Button } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import { Link } from 'react-router-dom'
+
+// tato komponenta slouzi pro prispevku vypis na hlavni strankce ( localhost:3000/ )
+
 function SinglePost(data) {
     const post = data.data
-
     return (
-
         <Container className='mt-5 fadeIn box-shadow p-4 flex container-wrap post-container'>
             <Row>
                 <Col sm={8}>
