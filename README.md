@@ -2,14 +2,13 @@
 Popis práce pro goodsailors. 
 
 ## Návod
-Pro spuštěný projektu je nutné stáhnout veškeré balíčky. V adresáři ./goodsailors/web a ./goodsailors/server použijte příkaz npm install.
+Pro spuštění projektu je nutné stáhnout veškeré balíčky. V adresáři ./goodsailors/web a ./goodsailors/server použijte příkaz npm install.
 Poté si nahrajte databázi, které je uložená ve složce ./goodsailors/goodsailorsDB.sql.
 
 Pro připojení k databázi je nutné upravit soubor config.json, dle vašeho nastavení mysql. Na macos je nutné specifikovat socketPath, popřípadě upravit jméno a heslo k databází. Na Windows by mělo stačit pouze nahrát databázi.
 
-Připojení na MacOS je nastaveno pro aplikaci MAMP
+Projekt lze spustit použitím příkazu npm start v obou adresářích /web a /server.
 
-Projekt lze spustit použitím příkazů npm start a obou adresářích /web a /server.
 ## Server
 Ve složce server se nachází jednoduché API, které bere příspěvky a uživatele z databáze.
 Server obsahuje tyto balíčky: 
@@ -19,7 +18,7 @@ Server obsahuje tyto balíčky:
 - cors = nastavení pravidel pro server
 - nodemon (lze použít i node)
 
-Pro přihlášení jsem nechal heslo v jeho původním tvaru bez šifrování. Server obsahuje následující cesty:
+Pro přihlášení jsem nechal heslo v jeho původním tvaru bez šifrování. Server obsahuje následující požadavky:
 
 - (GET)  http://localhost:3002/posts = vyberete všechny příspěvky z databáze
 - (GET)  http://localhost:3002/post/id = vybere jeden příspěvek podle ID parametru
