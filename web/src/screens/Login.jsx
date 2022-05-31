@@ -17,7 +17,7 @@ function Login() {
             password: password
         }).then(response => {
             sessionStorage.setItem("user", JSON.stringify(response.data[0]))
-            window.location.replace('/home');
+            window.location.replace('/');
         })
     }
 
@@ -26,13 +26,13 @@ function Login() {
         <Container className='mt-5 fadeIn bg-light box-shadow flex container-wrap post-container p-4'>
             {user ? <div>
                 <p className='text-center pt-2'>
-                    Ucet je jiz prihlasen <span style={{ color: "#f7ad44", fontWeight: "bold" }}>{user.user_name}</span>, pro navrat kliknite <Link to={"/home"}>zde</Link>
+                    Učet je již přihlášen <span style={{ color: "#f7ad44", fontWeight: "bold" }}>{user.user_name}</span>, pro návrat klikněte <Link to={"/home"}>zde</Link>
                 </p>
 
             </div>
                 :
                 <Form>
-                    <h4 className='text-center'>Prihlaseni</h4>
+                    <h4 className='text-center'>Přihlášení</h4>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <FloatingLabel
                             controlId="floatingInput"
@@ -49,11 +49,11 @@ function Login() {
                         </FloatingLabel>
                     </Form.Group>
                     <Form.Text className="text-muted">
-                        Pro prihlaseni pouzijte jmeno: admin, heslo: admin
+                        Pro přihlášení použijte jméno: admin, heslo: admin nebo jméno: admin2, heslo: admin2
                     </Form.Text>
                     <div className="div-center mt-2">
                         <Button type="button" className='post-button' onClick={() => tryLogin()}>
-                            Prihlasit
+                            Přihlásit
                         </Button>
                     </div>
                 </Form>

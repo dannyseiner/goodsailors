@@ -3,7 +3,7 @@ const app = express()
 const mysql = require('mysql')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const passwordHash = require('password-hash')
+const config = require("./config")
 const urlencodedParser = bodyParser.urlencoded({ extended: true, limit: '50mb' })
 
 
@@ -13,13 +13,7 @@ app.set('json spaces', 2)
 
 app.listen(3002)
 
-const con = mysql.createConnection({
-    "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock",
-    "user": "admin",
-    "password": "admin",
-    "host": "127.0.0.1",
-    "database": "goodsailors",
-})
+const con = mysql.createConnection(config.macos)
 
 con.connect(function (err) {
     if (err) throw err

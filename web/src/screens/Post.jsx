@@ -19,7 +19,13 @@ function Post() {
 
     const getPost = () => {
         axios.get(`http://localhost:3002/post/${params.id}`)
-            .then(response => setData(response.data[0]))
+            .then(response => {
+                if (response.data.length === 0) {
+                    document.location.replace("/notfound")
+                    return
+                }
+                setData(response.data[0])
+            })
     }
 
     return (
@@ -42,7 +48,7 @@ function Post() {
                     {user.user_id === data.post_author_id ? <Link to={`/edit/${data.post_id}`} className='post-button mx-2'>
                         <Pencil size={23} />
                     </Link> : ""}
-                    <Link to={`/home`} className='post-button'>Zpet</Link>
+                    <Link to={`/`} className='post-button'>Zpět</Link>
                 </div>
             </div>
         </Container>

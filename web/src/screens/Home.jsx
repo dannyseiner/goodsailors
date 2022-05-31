@@ -4,7 +4,7 @@ import axios from "axios"
 import SinglePost from '../components/SinglePost'
 function Home() {
 
-    const [posts, setPosts] = useState([]) // HOOK 
+    const [posts, setPosts] = useState([])
 
     useEffect(() => {
         loadPosts()
@@ -16,7 +16,7 @@ function Home() {
     }
 
     return (
-        <div>
+        <div className='pb-5'>
             {posts.map(post => (
                 <SinglePost key={post.post_id} data={post} />
             ))}

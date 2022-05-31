@@ -15,7 +15,7 @@ function CreatePost() {
 
     const sendPost = () => {
         if (title.length < 5 || message.length < 10) {
-            alert("Minimalni velikost titulku musi byt vetsi jak 5 znaku a textu vetsi jak 10 znaku!")
+            alert("Minimální velikost titulku musí být 5 a textu 10 znaků")
             return
         }
         axios.post("http://localhost:3002/createpost", {
@@ -23,8 +23,8 @@ function CreatePost() {
             message: message,
             user_id: user.user_id
         }).then(response => {
-            alert("Prispevek byl vytvoren")
-            setTitle(" ")
+            alert("Příspěvek byl úspešně vytvořen")
+            setTitle("")
             setMessage("")
         })
     }
@@ -33,7 +33,7 @@ function CreatePost() {
         <Container className='mt-5 fadeIn bg-light box-shadow flex container-wrap post-container p-4'>
             {user === false ?
                 <div>
-                    Pri pridani prispevku se musite prihlasit <Link to='/login'>zde</Link>
+                    Pro přidání příspvěku se musíte přihlásit <Link to='/login'>zde</Link>
                 </div>
                 :
                 <Form>
@@ -45,7 +45,7 @@ function CreatePost() {
                             value={title}
                             onChange={e => setTitle(e.target.value)}
                         >
-                            <Form.Control type="email" placeholder="name@example.com" />
+                            <Form.Control type="text" placeholder="Titulek" />
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingTextarea2" label="Text">
                             <Form.Control
@@ -61,7 +61,7 @@ function CreatePost() {
 
                     <div className="div-center">
                         <Button type="button" className='post-button' onClick={() => sendPost()}>
-                            Vytvorit
+                            Vytvořit
                         </Button>
                     </div>
                 </Form>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 31, 2022 at 10:01 AM
+-- Generation Time: May 31, 2022 at 10:55 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `goodsailors`
 --
+CREATE DATABASE IF NOT EXISTS `goodsailors` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `goodsailors`;
 
 -- --------------------------------------------------------
 
@@ -39,11 +41,10 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `post_author_id`, `post_title`, `post_message`) VALUES
-(1, 1, 'testovani -> title', 'testovani -> message'),
-(4, 1, 'pridani pres formular', 'pridani pres furmuler koment\n'),
-(6, 1, 'asdaf', 'q fqef qfqf'),
-(7, 1, 'asdq f t2g2fwe gq2', 'qefq. f q3fvweg 42g'),
-(8, 1, 'asdqwf qe', 'fq fq3f q32f3q');
+(4, 1, 'Testovaci prispevek 1', 'Testovaci prispevek 1 text 1\n'),
+(6, 2, 'Testovaci prispevek 2', 'Testovaci prispevek 2 text 2'),
+(7, 2, 'Testovaci prispevek 3', 'Testovaci prispevek 3 text 3'),
+(8, 1, 'Testovaci prispevek 4', 'Testovaci prispevek 4 text 4\n');
 
 -- --------------------------------------------------------
 

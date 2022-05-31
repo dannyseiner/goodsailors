@@ -17,26 +17,26 @@ const NavbarCom = () => {
     return (
         <Navbar bg="light" expand="lg" className="slideFromTop box-shadow">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand >
                     <span className="nav-brand-part">Good</span>sailors
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto" >
-                        <Link to="/home" className='nav-link'>Domu</Link>
+                        <Link to="/" className='nav-link'>Domů</Link>
                         {isLogged ?
-                            <Link to="/create" className='nav-link'>Pridat prispevek</Link> : " "}
+                            <Link to="/create" className='nav-link'>Přidat příspěvek</Link> : " "}
+                    </Nav>
+                    <Nav>
+                        {isLogged !== false ?
+                            <>
+                                {/* <span className='nav-link text-uppercase'>{isLogged.user_name}</span> */}
+                                <span className='nav-link' onClick={() => logOut()}>Odhlásit se</span>
+                            </>
+                            :
+                            <Link to="/login" className='nav-link'>Přihlásit se</Link>}
                     </Nav>
                 </Navbar.Collapse>
-                <Nav>
-                    {isLogged !== false ?
-                        <>
-                            {/* <span className='nav-link text-uppercase'>{isLogged.user_name}</span> */}
-                            <span className='nav-link' onClick={() => logOut()}>Odhlasit</span>
-                        </>
-                        :
-                        <Link to="/login" className='nav-link'>Prihlaseni</Link>}
-                </Nav>
             </Container>
         </Navbar>
     );

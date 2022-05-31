@@ -9,6 +9,12 @@ body {
   height: 100vh; /* Used to enable scrolling */
   background: #ffffff;
   font-family: "Open Sans", sans-serif;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 .container-wrap {
@@ -23,4 +29,13 @@ body {
 .div-center {
   width: fit-content;
   margin: 0px auto;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #f7ad44;
+}
+.link:hover {
+  color: #f7ad44;
 }

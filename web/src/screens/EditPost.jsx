@@ -19,7 +19,7 @@ function EditPost() {
     useEffect(() => {
         if (user.user_id && post.post_author_id) {
             if (user.user_id !== post.post_author_id) {
-                window.location.replace('/home')
+                window.location.replace('/')
             }
         }
     }, [user])
@@ -27,16 +27,22 @@ function EditPost() {
     const getPost = () => {
         axios.get(`http://localhost:3002/post/${params.id}`)
             .then(response => {
-                console.log(response.data)
+                if (response.data.length === 0) {
+                    document.location.replace("/notfound")
+                    return
+                }
                 setPost(response.data[0])
                 setTitle(response.data[0].post_title)
                 setMessage(response.data[0].post_message)
                 setUser(sessionStorage.getItem("user") === null ? { notlogged: true } : JSON.parse(sessionStorage.getItem("user")))
-                console.log(title, message)
             })
     }
 
     const updatePost = () => {
+        if (title.length < 5 || message.length < 10) {
+            alert("Minimální velikost titulku musí být 5 a textu 10")
+            return
+        }
         axios.post('http://localhost:3002/editpost', {
             title: title,
             message: message,
@@ -44,20 +50,20 @@ function EditPost() {
             post_author_id: user.user_id
         }).then(response => {
             if (response.data.status === "OK") {
-                alert("Prispevek byl upraven")
+                alert("Příspěvek byl upraven")
             }
         })
     }
 
     const deletePost = () => {
-        if (window.confirm("Opravdu chcete odstranit tento prispevek?") == true) {
+        if (window.confirm("Opravdu si přejete tento příspěvek odstranit?") == true) {
             axios.post('http://localhost:3002/deletepost', {
                 post_id: post.post_id,
                 post_author_id: user.user_id
             }).then(response => {
                 if (response.data.status === "OK") {
-                    alert("Prispevek byl smazan")
-                    document.location.replace('/home')
+                    alert("Příspěvek byl smazán")
+                    document.location.replace('/')
                 }
             })
         }
@@ -67,7 +73,7 @@ function EditPost() {
         <Container className='mt-5 fadeIn bg-light box-shadow flex container-wrap post-container p-4'>
             {user.notlogged === true ?
                 <div>
-                    Pro upraveni prispevku se musite prihlasit <Link to='/login'>zde</Link>
+                    Pro upravení příspěvku se musíte přihlásit <Link to='/login'>zde</Link>
                 </div>
                 :
                 <Form>
@@ -80,7 +86,7 @@ function EditPost() {
 
 
                         >
-                            <Form.Control type="email" placeholder="name@example.com" onChange={e => setTitle(e.target.value)} value={title} />
+                            <Form.Control type="text" placeholder="titulek" onChange={e => setTitle(e.target.value)} value={title} />
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingTextarea2" label="Text">
                             <Form.Control
@@ -95,11 +101,14 @@ function EditPost() {
                     </Form.Group>
 
                     <div className="div-center">
-                        <Button type="button" className='post-button' onClick={() => deletePost()}>
-                            Smazat
-                        </Button>
+                        <Link type="button" className='post-button' to={`/post/${params.id}`}>
+                            Zobrazit
+                        </Link>
                         <Button type="button" className='post-button mx-3' onClick={() => updatePost()}>
                             Upravit
+                        </Button>
+                        <Button type="button" className='post-button' onClick={() => deletePost()}>
+                            Smazat
                         </Button>
                     </div>
                 </Form>
